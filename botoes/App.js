@@ -4,7 +4,7 @@ export default function App() {
   return (
 
     <View style = {styles.container} >
-      <Image> </Image>
+  
       <Text style = {styles.subtitulo}>Melhor funkeira dos anos 2000</Text>
 
       <TouchableHighlight style={styles.botao} onPress={() => alert('click!')} >

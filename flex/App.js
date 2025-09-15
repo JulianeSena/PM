@@ -1,42 +1,93 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View,Touchable, TouchableOpacity, Image, Alert, Linking } from 'react-native';
+
 
 export default function App() {
-  return (
+  
+
+    const desc = (tipo) => {
+      let titulo=''
+      let descricao=''
+      let video=''
+
+      if(tipo == 'React'){
+        titulo = 'React-Native'
+        descricao = 'Reac-Native'
+        video = 'https://youtu.be/Gsa_4s3CjmI?si=DrkGTKWbE0vXRS8Q'
+      }
+
+      else if(tipo == 'flutter'){
+        titulo = 'Flutter'
+        descricao = 'Flutter'
+        video = 'https://youtu.be/FaTa-wJIWZ0?si=KI9vavk-SmiCWHhB'
+      }
+
+      else if(tipo == 'js'){
+        titulo = 'Js'
+        descricao = 'js'
+        video = ''
+      }
+      else if(tipo == 'py'){
+        titulo = 'py'
+        descricao = 'Py'
+        video = ''
+      }
+    }
+
+    Alert.alert(
+      titulo,
+      descricao,
+      [
+        {
+          text:'Ver Videp',
+          onPress: () => Linking.canOpenURL(video)
+        },
+        {
+          text:'Fechar',
+          onPress: () => null
+        }
+      ]
+    )
+  }
+  
+  return(
     <View style={styles.container}>
     
-      <View style={styles.box1}>
-        <Text>box 1</Text>
-      </View>
+      <TouchableOpacity style={styles.box1} onPress={() => desc('React')}>
+        <Text>Sonic</Text>
+        <Image source={require('./assets/sonic.png')}/>
+      </TouchableOpacity>
 
-      <View style={styles.box2}>
-        <Text>box 2</Text>
-      </View>
-
-      <View style={styles.box3}>
-        <Text>box 3</Text>
-      </View>
+      <TouchableOpacity style={styles.box2}>
+        <Text>shadow</Text>
+      </TouchableOpacity>
       
-      <View style={styles.box4}>
-        <Text>box 4</Text>
-      </View>
-    
-          <View style={styles.box5}>
-        <Text>box 5</Text>
-      </View>
+      <TouchableOpacity style={styles.box3}>
+        <Text>Amy</Text>
+      </TouchableOpacity>
+      
+      <TouchableOpacity style={styles.box4}>
+        <Text>Knuckles</Text>
+      </TouchableOpacity>
 
     </View>
   );
-}
+
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'row',
+    flexDirection: 'column',
     flaxWrap:'wrap',
-    backgroundColor: '#fff',
+    alignContent:'center',
+    rowGap:50,
+    columGap:50,
+    paddingTop:200,
+    paddingBottom:200,
+    backgroundColor: '#000000ff',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
+    
     
     //coloca no inicio da tela (cima)
     // justifyContent: 'flex-end' fina da tela (baixo)
@@ -45,33 +96,44 @@ const styles = StyleSheet.create({
   },
   box1:{
     //flex:1,
-    backgroundColor: '#ff0202ff',
-    width: 100,
-    height: 200
+    backgroundColor: '#fffdfd8b',
+    width: 80,
+    height: 100,
+    borderRadius: 20,
+    padding:20,
+    alignItems:'center',
+    justifyContent:'center'
   },
   box2:{
-    //flex:1,
-    backgroundColor: '#ff9900ff',
-    width: 100,
-    height: 200
+    backgroundColor: '#fffdfd8b',
+    width: 80,
+    height: 100,
+    borderRadius: 20,
+    padding:20,
+    alignItems:'center',
+    justifyContent:'center'
   },
   box3:{
-    //flex:1,
-    backgroundColor: '#dafa08ff',
-    width: 100,
-    height: 200
+    backgroundColor: '#fffdfd8b',
+    width: 80,
+    height: 100,
+    borderRadius: 20,
+    padding:20,
+    alignItems:'center',
+    justifyContent:'center'
   },
   box4:{
-    //flex:1,
-    backgroundColor: '#95fa08ff',
-    width: 100,
-    height: 200
+    backgroundColor: '#fffdfd8b',
+    width: 80,
+    height: 100,
+    borderRadius: 20,
+    padding:20,
+    alignItems:'center',
+    justifyContent:'center'
   },
-  box5:{
-    //flex:1,
-    backgroundColor: '#79fa08ff',
-    width: 100,
-    height: 200
+  style:{
+    width:40,
+    height:40
   }
 
 });
